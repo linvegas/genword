@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Gename</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="index.js" defer></script>
+    <style>
+      * {margin: 0; padding: 0;}
+      html {color-scheme: dark light;}
+      body {font-family: system-ui; font-size: 2rem;}
+      button {font-size: inherit;}
+      ul {list-style: none;}
+      main {
+        width: min(100% - 3rem, 1000px);
+        margin-inline: auto;
+      }
+      div#controls {
+        padding-top: 2rem;
+        text-align: center;
+
+        & button#gen-btn {
+          border-radius: 0.5rem;
+          padding: 0.25rem 0.75rem;
+        }
+      }
+      ul {
+        text-align: center;
+        padding-block: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        & li {
+          background: rgba(255, 255, 255, 0.10);
+          color: khaki;
+          width: fit-content;
+          border-radius: 0.5rem;
+          padding: 0.25rem 0.75rem;
+        }
+      }
+    </style>
+    <!--<link href="style.css" rel="stylesheet">-->
+  </head>
+  <body>
+    <main>
+      <div id="controls">
+        <button id="gen-btn">Generate</button>
+      </div>
+      <ul id="word-list">
+        <p style="color: gray;">No words, yet...</p>
+      </ul>
+    </main>
+  </body>
+</html>

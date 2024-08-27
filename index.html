@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Gename</title>
+    <title>Genword</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,16 @@
       * {margin: 0; padding: 0;}
       html {color-scheme: dark light;}
       body {font-family: system-ui; font-size: 2rem;}
-      button {font-size: inherit;}
+      button, input {font-size: inherit;}
+      input[type="number"] {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
       ul {list-style: none;}
       main {
         width: min(100% - 3rem, 1000px);
@@ -21,6 +30,12 @@
         text-align: center;
 
         & button#gen-btn {
+          border-radius: 0.5rem;
+          padding: 0.25rem 0.75rem;
+        }
+
+        & input[type="number"] {
+          max-width: 3ch;
           border-radius: 0.5rem;
           padding: 0.25rem 0.75rem;
         }
@@ -47,6 +62,18 @@
   <body>
     <main>
       <div id="controls">
+        <label>
+          Words
+          <input id="words-num-input" min="1" max="50" type="number" placeholder="10">
+        </label>
+        <label>
+          Min
+          <input id="syl-min" min="1" max="10" type="number" placeholder="2">
+        </label>
+        <label>
+          Max
+          <input id="syl-max" min="1" max="10" type="number" placeholder="3">
+        </label>
         <button id="gen-btn">Generate</button>
       </div>
       <ul id="word-list">

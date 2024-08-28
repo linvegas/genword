@@ -22,10 +22,11 @@
       }
       ul {list-style: none;}
       main {
+        min-height: 100vh;
         width: min(100% - 3rem, 1000px);
         margin-inline: auto;
       }
-      div#controls {
+      form#controls {
         padding-top: 2rem;
         text-align: center;
 
@@ -61,21 +62,21 @@
   </head>
   <body>
     <main>
-      <div id="controls">
+      <form id="controls">
         <label>
           Words
-          <input id="words-num-input" min="1" max="50" type="number" placeholder="10">
+          <input name="words-num-input" min="1" max="50" type="number" placeholder="10">
         </label>
         <label>
           Min
-          <input id="syl-min" min="1" max="10" type="number" placeholder="2">
+          <input name="syl-min" min="1" max="10" type="number" placeholder="2">
         </label>
         <label>
           Max
-          <input id="syl-max" min="1" max="10" type="number" placeholder="3">
+          <input name="syl-max" min="1" max="10" type="number" placeholder="3">
         </label>
-        <button id="gen-btn">Generate</button>
-      </div>
+        <button type="submit" id="gen-btn">Generate</button>
+      </form>
       <ul id="word-list">
         <p style="color: gray;">No words, yet...</p>
       </ul>

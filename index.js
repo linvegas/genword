@@ -2,10 +2,11 @@ const VOWELS = "aeiou";
 const CONSONANTS = "bcdfghjklmnpqrstvxyz";
 const MAX_SYL = 3;
 
+const formElem = document.querySelector("form#controls");
 const genBtnElem = document.querySelector("button#gen-btn");
-const wordNumInputElem = document.querySelector("input#words-num-input");
-const sylMinElem = document.querySelector("input#syl-min");
-const sylMaxElem = document.querySelector("input#syl-max");
+const wordNumInputElem = document.querySelector("input[name='words-num-input']");
+const sylMinElem = document.querySelector("input[name='syl-min']");
+const sylMaxElem = document.querySelector("input[name='syl-max']");
 const wordListElem = document.querySelector("ul#word-list");
 
 const print = (msg) => console.log(msg);
@@ -82,20 +83,16 @@ function generateWordsList({wordsLen, sylRange}) {
     return list;
 }
 
-genBtnElem.addEventListener("click", () => {
+formElem.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const formData = new FormData(formElem);
+
+    options.wordsLen = parseInt(formData.get("words-num-input"));
+    options.sylRange.min = parseInt(formData.get("syl-min"));
+    options.sylRange.max = parseInt(formData.get("syl-max"));
+
     let wordList = generateWordsList(options);
     updateWordListElem(wordList)
     wordList = [];
-});
-
-wordNumInputElem.addEventListener("input", event => {
-    options.wordsLen = parseInt(event.target.value);
-});
-
-sylMinElem.addEventListener("input", event => {
-    options.sylRange.min = parseInt(event.target.value);
-});
-
-sylMaxElem.addEventListener("input", event => {
-    options.sylRange.max = parseInt(event.target.value);
 });

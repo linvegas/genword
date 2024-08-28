@@ -9,8 +9,11 @@
     <style>
       * {margin: 0; padding: 0;}
       html {color-scheme: dark light;}
-      body {font-family: system-ui; font-size: 2rem;}
-      button, input {font-size: inherit;}
+      body {font-family: system-ui; font-size: 1.25rem;}
+      button, input {
+        font-size: inherit;
+        border: 2px solid darkslategray;
+      }
       input[type="number"] {
         -webkit-appearance: textfield;
         -moz-appearance: textfield;
@@ -25,14 +28,18 @@
         min-height: 100vh;
         width: min(100% - 3rem, 1000px);
         margin-inline: auto;
+        display: grid;
+        grid-template-rows: 150px 100%;
       }
       form#controls {
-        padding-top: 2rem;
+        padding-block: 2rem 1rem;
         text-align: center;
 
         & button#gen-btn {
           border-radius: 0.5rem;
           padding: 0.25rem 0.75rem;
+          margin-top: 1rem;
+          cursor: pointer;
         }
 
         & input[type="number"] {
@@ -43,12 +50,13 @@
       }
       ul {
         text-align: center;
-        padding-block: 1rem;
+        padding-bottom: 2rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 1rem;
+        font-size: 1.75rem;
         & li {
           background: rgba(255, 255, 255, 0.10);
           color: khaki;
@@ -74,7 +82,7 @@
         <label>
           Max
           <input name="syl-max" min="1" max="10" type="number" placeholder="3">
-        </label>
+        </label> <br>
         <button type="submit" id="gen-btn">Generate</button>
       </form>
       <ul id="word-list">

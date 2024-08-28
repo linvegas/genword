@@ -31,6 +31,12 @@ wordNumInputElem.value = options.wordsLen;
 sylMinElem.value = options.sylRange.min;
 sylMaxElem.value = options.sylRange.max;
 
+function writeToClipboard(text) {
+    navigator.clipboard.writeText(text)
+        .then(() => console.log("Copied!"))
+        .catch(e => console.error(e))
+}
+
 /** @param {Array<String>} list */
 function updateWordListElem(list) {
     wordListElem.innerHTML = "";
@@ -38,6 +44,8 @@ function updateWordListElem(list) {
     list.forEach(word => {
         const li = document.createElement("li");
         const text = document.createTextNode(word);
+        li.addEventListener("click", () => writeToClipboard(word));
+        li.setAttribute("title", "Click to copy");
         li.appendChild(text);
         wordListElem.appendChild(li);
     })
@@ -62,13 +70,13 @@ function generateWordsList({wordsLen, sylRange}) {
 
             if (syl[0] === 'q' && syl[1] !== 'u') syl = syl[0] + 'u' + syl[1];
 
-            if (prob(15)) {
+            if (prob(13)) {
                 syl += 'm';
             } else if (prob(14)) {
                 syl += 'n';
-            } else if (prob(20)) {
+            } else if (prob(16)) {
                 syl += 'r';
-            } else if (prob(18)) {
+            } else if (prob(14)) {
                 syl += 'l';
             } else if (prob(7)) {
                 syl += 'x';

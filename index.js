@@ -66,19 +66,19 @@ function generateWordsList({wordsLen, sylRange}) {
             let vow = VOWELS[Math.floor(Math.random()*VOWELS.length)];
             let con = CONSONANTS[Math.floor(Math.random()*CONSONANTS.length)];
 
-            let syl = con + vow;
+            let syl = prob(8) ? vow + con : con + vow;
 
             if (syl[0] === 'q' && syl[1] !== 'u') syl = syl[0] + 'u' + syl[1];
 
-            if (prob(13)) {
+            if (prob(7)) {
                 syl += 'm';
-            } else if (prob(14)) {
+            } else if (prob(10)) {
                 syl += 'n';
-            } else if (prob(16)) {
+            } else if (prob(9)) {
                 syl += 'r';
-            } else if (prob(14)) {
+            } else if (prob(11)) {
                 syl += 'l';
-            } else if (prob(7)) {
+            } else if (prob(6)) {
                 syl += 'x';
             }
 

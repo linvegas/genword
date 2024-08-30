@@ -11,6 +11,7 @@ const wordListElem = document.querySelector("ul#word-list");
 
 const print = (msg) => console.log(msg);
 const prob = (prob) => Math.random() * 100 < prob ? true : false;
+const isVowel = (c) => ['a', 'e', 'i', 'o', 'u'].indexOf(c.toLocaleLowerCase()) !== -1;
 
 /**
  * @typedef {Object} Options
@@ -70,16 +71,18 @@ function generateWordsList({wordsLen, sylRange}) {
 
             if (syl[0] === 'q' && syl[1] !== 'u') syl = syl[0] + 'u' + syl[1];
 
-            if (prob(7)) {
-                syl += 'm';
-            } else if (prob(10)) {
-                syl += 'n';
-            } else if (prob(9)) {
-                syl += 'r';
-            } else if (prob(11)) {
-                syl += 'l';
-            } else if (prob(6)) {
-                syl += 'x';
+            if (!isVowel(syl[0]))  {
+                if (prob(7)) {
+                    syl += 'm';
+                } else if (prob(10)) {
+                    syl += 'n';
+                } else if (prob(9)) {
+                    syl += 'r';
+                } else if (prob(11)) {
+                    syl += 'l';
+                } else if (prob(6)) {
+                    syl += 'x';
+                }
             }
 
             word += syl;
